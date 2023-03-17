@@ -20,6 +20,4 @@ sudo chmod +x "$SCRIPT_DIR/$SCRIPT_NAME"
 
 # Print out the script location and usage information
 echo -e "The script has been installed to ${GREEN}$SCRIPT_DIR/$SCRIPT_NAME${NC}."
-echo "To run the script, use the following command:"
-echo -e "${GREEN}$SCRIPT_NAME <url> <wordlist>${NC}"
 
