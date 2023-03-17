@@ -13,7 +13,7 @@ CxreBuster is tool writen on bash that will find all paths that are in wordlist
 ``` 
 git clone https://github.com/TheDataDominator/cxrebuster.git
 cd cxrebuster
-sudo setup.sh
+sudo bash setup.sh
 ```
 
 # usage :
