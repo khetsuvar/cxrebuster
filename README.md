@@ -7,7 +7,7 @@
  -----------------------made with love from TheDataDominator------------------
  ```
  # what is CxreBuster?
-CxreBuster is tool writen on bash that will find all paths that are in wordlist 
+CxreBuster is tool writen on bash that will find all paths or subdomains that are in wordlist 
  # How To install
  
 ``` 
