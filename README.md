@@ -15,7 +15,10 @@ git clone https://github.com/TheDataDominator/cxrebuster.git
 cd cxrebuster
 sudo bash setup.sh
 ```
-
+# requirements
+```
+sudo apt install figlet
+```
 # usage :
 
 ```
