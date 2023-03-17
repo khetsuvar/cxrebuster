@@ -18,9 +18,10 @@ sudo bash setup.sh
 # requirements
 ```
 sudo apt install figlet
+sudo apt install curl
 ```
 # usage :
 
 ```
-cxrebuster <url> <wordlist.txt>     
+cxrebuster <url> <wordlist.txt> <mode> 
 ```
