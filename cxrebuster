@@ -1,0 +1,39 @@
+#!/bin/bash
+ 
+GREEN='\033[0;32m'
+RED='\033[0;31m'
+NC='\033[0m'
+
+if [ $# -ne 2 ]; then
+    echo "Usage: cxrebuster <url> <wordlist>"
+    exit 1
+fi
+
+url=$1
+wordlist=$2
+found_file="found_${url##*/}.txt"
+tmp_file=$(mktemp)
+
+echo -e "Scanning ${GREEN}$url${NC} with wordlist ${GREEN}$wordlist${NC}"
+
+while read word; do
+    if [[ -z "$word" ]]; then
+        continue
+    fi
+    
+    response=$(curl -s -o /dev/null -w "%{http_code}" "${url}/${word}")
+    
+    if [ "$response" == "200" ]; then
+        echo -e "[${GREEN}+${NC}] found 200: ${GREEN}${url}/${word}${NC}"
+        echo "${url}/${word}" >> "$found_file"
+    elif [ "$response" == "301" ] || [ "$response" == "302" ] || [ "$response" == "307" ]; then
+        echo -e "[${RED}-${NC}] found redirect (${response}): ${url}/${word}"
+    elif [ "$response" == "403" ] || [ "$response" == "401" ] || [ "$response" == "400" ]; then
+        echo -e "[${RED}-${NC}] found ${response}: ${url}/${word}"
+    fi
+done <"$wordlist" >"$tmp_file"
+
+echo -e "\nWriting found sites to ${GREEN}$found_file${NC}"
+cat "$tmp_file" >> "$found_file"
+rm "$tmp_file"
+
