@@ -13,7 +13,7 @@ url=$1
 wordlist=$2
 found_file="found_${url##*/}.txt"
 tmp_file=$(mktemp)
-
+figlet -f slant "cxrebuster"
 echo -e "Scanning ${GREEN}$url${NC} with wordlist ${GREEN}$wordlist${NC}"
 
 while read word; do
